@@ -1,20 +1,33 @@
+import java.awt.Component;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 public class UI implements ActionListener{
 	
-	JFrame frame;
-	JButton b1, b2, b3, b4;
+	private final JFrame frame;
+	JTextField textField;
+	JButton[] numButtons = new JButton[10];
+	JButton[] funcButtons = new JButton[8];
+	JButton addition,subtraction,multiply,division;
+	JButton decimal, equals, delete, clear;
+	JPanel panel;
 	
-	public UI() {
+	Font myFont = new Font("Arial", Font.BOLD, 25);
+	double num1=0, num2=0, result=0; 
+	char operator;
+
+	UI() {
         frame = new JFrame("Calculator");
-        b1 = new JButton("Click");
-        b2 = new JButton("ffs");
-        b3 = new JButton("31");
-        b4 = new JButton("22");
+        textField = new JTextField();
+        textField.setBounds(50, 25, 300, 50);
+		textField.setFont(myFont);
         
     }
 	
@@ -26,18 +39,19 @@ public class UI implements ActionListener{
             }
         });
 
-}
+	}
+		
+	
 	//Where the labels and frames of the GUI is implemented 
 	 private void createAndShowGUI() {
-	        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	        frame.setSize(400, 500);
+	 
+		 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	        frame.setSize(420, 550);
 	        frame.setLocationRelativeTo(null);
-	        frame.add(b1);
-	        frame.add(b2);
-	        frame.add(b3);
-	        frame.add(b4);
-	        frame.setVisible(true);
+	        frame.setLayout(null);
+	        frame.add(textField);
 	        
+	        frame.setVisible(true);  
 	    }
 
 	@Override
